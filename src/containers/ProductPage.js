@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'react-emotion';
-import ImageGallery from 'react-image-gallery';
+
+
 
 const imagecontainer = css`
   width: 400px;
@@ -31,24 +32,13 @@ class ProductPage extends Component {
       let info = this.props.productInfo;
       info.images.map(el => {
         console.log(el.url);
-        images.push({
-          original: 'http://localhost:1337'  + el.url,
-          thumbnail: 'http://localhost:1337'  + el.url
-        })
+        images.push('http://localhost:1337'  + el.url)
       })
       console.log(images);
-      gallery = <ImageGallery 
-                  items={images} 
-                  showNav={false}
-                  disableThumbnailScroll
-                  disableSwipe 
-                  showFullscreenButton={false}
-                  showPlayButton={false}/>;
     }
     return (
       <div >
         <div className={imagecontainer}>
-          {gallery}
         </div>
       </div>
     )
