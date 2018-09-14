@@ -7,6 +7,13 @@ export const setProducts = (products) => {
   }
 }
 
+export const selectProduct = (selecta) => {
+  return {
+    type: 'SELECT_ITEM',
+    selecta: selecta
+  }
+}
+
 export const initProducts = () => {
   return dispatch => {
     axios.get('http://localhost:1337/products')

@@ -32,7 +32,7 @@ const PinkDiv = styled('div')`
 `
 const item = (props) => {
   return (
-    <div className={itemcontainer} onClick={() => props.clicked(props.info.name)}>
+    <div className={itemcontainer} onClick={() => props.clicked(props.info)}>
       <div className={imgcontainer}>
         <img src={"http://localhost:1337" + props.info.images[0].url} alt=""/>
       </div>

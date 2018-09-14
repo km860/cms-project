@@ -16,14 +16,15 @@ class Shop extends Component {
     this.props.onInitProducts()
   }
 
-  handleClick = (id) => {
-    console.log(id);
+  handleClick = (selected) => {
+    console.log(selected);
+    this.props.onChooseItem(selected)
   }
 
   render() {
     console.log('i render ',this.props.products);
     let productList = this.props.products.map((el, index) => {
-      return <Item key={index} info={el} clicked={(id) => this.handleClick(id) } />
+      return <Item key={index} info={el} clicked={(selected) => this.handleClick(selected) } />
     });
 
     // filter the different categories
@@ -41,7 +42,7 @@ class Shop extends Component {
         <div className={listItems}>
           {productList}
         </div>
-        <ProductPage  productInfo={this.props.products[0]}/>
+        <ProductPage productInfo={this.props.chosenItem}/>
         {/* <Spinner /> */}
 
       </div>
@@ -51,13 +52,15 @@ class Shop extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.products,
+    chosenItem: state.selectedItem
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitProducts: () => dispatch(actions.initProducts())
+    onInitProducts: () => dispatch(actions.initProducts()),
+    onChooseItem: (selected) => dispatch(actions.selectProduct(selected))
   }
 }
 
