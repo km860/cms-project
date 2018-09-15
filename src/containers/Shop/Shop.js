@@ -19,6 +19,7 @@ class Shop extends Component {
   handleClick = (selected) => {
     console.log(selected);
     this.props.onChooseItem(selected)
+    console.log(this.props.history);
   }
 
   render() {

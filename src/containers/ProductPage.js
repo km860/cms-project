@@ -19,13 +19,20 @@ const textContainer = css`
   h4 {
     text-align: center;
     margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
   }
   p {
     line-height: 1.6em;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: #333; 
   }
   p:last-of-type {
     margin-top: 10px;
     font-size: 20px;
+    font-weight: 400;
   }
 `
 
@@ -40,7 +47,7 @@ const BuyBtn  = styled('button')`
   border: none;
   outline: none;
   border-radius: 4px;
-  box-shadow: 0 2px 2px grey;
+  box-shadow: 0px 0px 1px 1px grey;
   &:hover {
     background-color: #222c;
   }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
 //import { connect } from 'react-redux';
 import { css, injectGlobal } from 'emotion';
 //import * as actions from './store/actions';
 import Shop from './containers/Shop/Shop';
+import ProductPage from './containers/ProductPage';
 //import Spinner from './components/UI/Spinner/Spinner';
 
 injectGlobal`
@@ -20,10 +22,15 @@ class App extends Component {
     
   }
   render() {
-  
+    let routes = (
+      <Switch>
+        <Route path='/products' component={ProductPage} />
+        <Route path='/' exact component={Shop} />
+      </Switch>
+    )
     return (
       <div className="App">
-        <Shop />
+        {routes}
         {/* <Spinner /> */}
       </div>
     );
