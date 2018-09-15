@@ -24,6 +24,7 @@ const itemcontainer = css`
   transition: box-shadow 0.1s ease-in;
   &:hover {
     box-shadow: 0 2px 14px grey;
+    cursor: pointer;
   }
   
 `

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { css } from 'react-emotion';
+import { Route } from 'react-router-dom'
 
 import SideBar from '../../components/SideBar/SideBar';
 import Item from '../../components/Item/Item';
@@ -17,12 +18,12 @@ class Shop extends Component {
   }
 
   handleClick = (selected) => {
-    console.log(selected);
     this.props.onChooseItem(selected)
+    this.props.history.push('/product')
+
   }
 
   render() {
-    console.log('i render ',this.props.products);
     let productList = this.props.products.map((el, index) => {
       return <Item key={index} info={el} clicked={(selected) => this.handleClick(selected) } />
     });
@@ -42,8 +43,10 @@ class Shop extends Component {
         <div className={listItems}>
           {productList}
         </div>
-        <ProductPage productInfo={this.props.chosenItem}/>
-        {/* <Spinner /> */}
+        {/* <Route 
+          path='/product'
+          render={(props) => <ProductPage {...props} productInfo={this.props.chosenItem} />}
+        /> */}
 
       </div>
     );

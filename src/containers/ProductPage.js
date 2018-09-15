@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled, { css } from 'react-emotion';
 
 const page = css`
@@ -97,4 +98,10 @@ class ProductPage extends Component {
   }
 }
 
-export default ProductPage;
+const mapStateToProps = state => {
+  return {
+    productInfo: state.selectedItem
+  }
+}
+
+export default connect(mapStateToProps)(ProductPage);
