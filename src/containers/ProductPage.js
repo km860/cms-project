@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled, { css } from 'react-emotion';
+
+import NavBar from '../components/NavBar/NavBar';
 
 const page = css`
   width: 95%;
@@ -92,16 +95,25 @@ class ProductPage extends Component {
       
     }
     return (
-      <div className={page}>
-        <div className={imagecontainer}>
-          {gallery}
-        </div>
-        <div className={textContainer}>
-          {text}
+      <div>
+        <NavBar />
+        <div className={page}>
+          <div className={imagecontainer}>
+            {gallery}
+          </div>
+          <div className={textContainer}>
+            {text}
+          </div>
         </div>
       </div>
     )
   }
 }
 
-export default ProductPage;
+const mapStateToProps = state => {
+  return {
+    productInfo: state.selectedItem
+  }
+}
+
+export default connect(mapStateToProps)(ProductPage);
