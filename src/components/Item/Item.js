@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
-import { css } from 'emotion';
+import styled, { css } from 'react-emotion';
 
 const imgcontainer = css`
   width: 200px;
@@ -29,7 +28,8 @@ const itemcontainer = css`
   
 `
 const PinkDiv = styled('div')`
-  color: pink;
+  color: hotpink;
+  padding: 10px;
 `
 const item = (props) => {
   return (

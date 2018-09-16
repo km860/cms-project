@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { css } from 'react-emotion';
-import { Route } from 'react-router-dom'
+// import { Route } from 'react-router-dom'
 
+import NavBar from '../../components/NavBar/NavBar'
 import SideBar from '../../components/SideBar/SideBar';
 import Item from '../../components/Item/Item';
-import ProductPage from '../ProductPage'
+// import ProductPage from '../ProductPage'
 import * as actions from '../../store/actions';
 
 const listItems = css`
@@ -37,6 +38,7 @@ class Shop extends Component {
     console.log(categories);
     return (
       <div className="Main">
+        <NavBar />
         <div>
           <SideBar categories={categories} />
         </div>

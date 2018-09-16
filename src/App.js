@@ -5,7 +5,6 @@ import { css, injectGlobal } from 'emotion';
 //import * as actions from './store/actions';
 import Shop from './containers/Shop/Shop';
 import ProductPage from './containers/ProductPage';
-import Spinner from './components/UI/Spinner/Spinner';
 //import Spinner from './components/UI/Spinner/Spinner';
 
 injectGlobal`
