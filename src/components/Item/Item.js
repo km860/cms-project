@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-
+import { NavLink } from 'react-router-dom'
 const imgcontainer = css`
   width: 200px;
   img {
@@ -25,7 +25,6 @@ const itemcontainer = css`
     box-shadow: 0 2px 14px grey;
     cursor: pointer;
   }
-  
 `
 const PinkDiv = styled('div')`
   color: hotpink;
@@ -33,7 +32,7 @@ const PinkDiv = styled('div')`
 `
 const item = (props) => {
   return (
-    <div className={itemcontainer} onClick={() => props.clicked(props.info)}>
+    <NavLink className={itemcontainer} to={`/product/${props.info._id}`}>
       <div className={imgcontainer}>
         <img src={"http://localhost:1337" + props.info.images[0].url} alt=""/>
       </div>
@@ -41,7 +40,7 @@ const item = (props) => {
         <p>{props.info.name}</p>
         <PinkDiv>${props.info.price}</PinkDiv>
       </div>
-    </div>
+    </NavLink>
   )
 }
 
