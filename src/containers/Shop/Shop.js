@@ -30,6 +30,7 @@ class Shop extends Component {
   handleSortPrice = (val) => {
     
     console.log(val)
+    this.props.onSortPrice(val)
   }
 
   render() {
