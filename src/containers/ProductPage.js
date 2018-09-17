@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled, { css } from 'react-emotion';
 
 import NavBar from '../components/NavBar/NavBar';
+import * as actions from '../store/actions';
 
 const page = css`
   width: 95%;
@@ -57,11 +58,19 @@ class ProductPage extends Component {
     product: null
   }
   componentDidMount() {
-    if (this.props.productInfo && this.props.productInfo !== undefined) {
+    const id = this.props.match.params.id;
+    console.error("id is", id)
+    this.props.onInitProduct(id)
+    /* if (this.props.productInfo && this.props.productInfo !== undefined) {
       console.log(this.props.productInfo.name);
       this.setState({product: this.props.productInfo})
-    }
+    } */
+
    
+  }
+
+  componentDidUpdate(prevProps) {
+
   }
   render() {
     /* this.props.productInfo.images.map(el => {
@@ -109,4 +118,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(ProductPage);
+const mapDispatchToProps = dispatch => {
+  return {
+    onInitProduct: (id) => dispatch(actions.initProduct(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

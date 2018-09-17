@@ -15,13 +15,21 @@ const listItems = css`
 `
 class Shop extends Component {
   componentDidMount() {
-    this.props.onInitProducts()
+    this.props.onInitShop()
   }
 
   handleClick = (selected) => {
     this.props.onChooseItem(selected)
     this.props.history.push('/product')
 
+  }
+  handleFilter = (cat) => { 
+    this.props.onFilterCategory(cat);
+  }
+
+  handleSortPrice = (val) => {
+    
+    console.log(val)
   }
 
   render() {
@@ -30,17 +38,21 @@ class Shop extends Component {
     });
 
     // filter the different categories
-    const categories = this.props.products.filter((el, index, self) => {
+    /* const categories = this.props.products.filter((el, index, self) => {
       return index === self.findIndex((e) => {
         return e.category === el.category
       })
-    }).map(el => el.category)
-    console.log(categories);
+    }).map(el => el.category) */
+    const categories = ['toy drones', 'camera drones', 'drone accessories'];
     return (
       <div className="Main">
         <NavBar />
         <div>
-          <SideBar categories={categories} />
+          <SideBar 
+            categories={categories} 
+            filterCat={(cat) => this.handleFilter(cat)}
+            clickReset={this.props.onInitShop}
+            sortPrice={(val) => this.handleSortPrice(val)} />
         </div>
         <div className={listItems}>
           {productList}
@@ -64,8 +76,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitProducts: () => dispatch(actions.initProducts()),
-    onChooseItem: (selected) => dispatch(actions.selectProduct(selected))
+    onInitShop: () => dispatch(actions.initShop()),
+    onChooseItem: (selected) => dispatch(actions.selectProduct(selected)),
+    onFilterCategory: (cat) => dispatch(actions.initFilter(cat)),
+    onSortPrice: (val) => dispatch(actions.initSortPrice(val))
   }
 }
 

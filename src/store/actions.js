@@ -7,20 +7,45 @@ export const setProducts = (products) => {
   }
 }
 
-export const selectProduct = (selecta) => {
+export const selectProduct = (selectedProduct) => {
   return {
     type: 'SELECT_ITEM',
-    selecta: selecta
+    selected: selectedProduct
   }
 }
 
-export const initProducts = () => {
+export const initFilter = (cat) => {
+  return dispatch => {
+    axios.get('http://localhost:1337/products?category=' + cat)
+      .then(res => {
+        dispatch(setProducts(res.data))
+      }) 
+      .catch(err => {
+        console.log(err);
+      });
+  }
+}
+
+export const initSortPrice = (val) => {
+}
+
+export const initProduct = (product) => {
+  return dispatch => {
+    axios.get('http://localhost:1337/products/' + product)
+      .then(res => {
+        dispatch(selectProduct(res.data))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+}
+
+export const initShop = () => {
   return dispatch => {
     axios.get('http://localhost:1337/products')
       .then(res => {
-        console.log(res.data)
         dispatch(setProducts(res.data));
-        
       })
       .catch(err => {
         console.log(err);

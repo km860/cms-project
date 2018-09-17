@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { css } from 'react-emotion';
 
 const bar = css`
   width: 100%;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 
   img {
     width: 24px;
@@ -17,6 +21,9 @@ const bar = css`
 const navbar = (props) => {
   return (
     <div className={bar}>
+      <div>
+        <Link to='/'><span>Home</span></Link>
+      </div>
       <div>
         <img src={ require('../../assets/online-shopping-cart.png') } alt=""/>
         <span>(0)</span>

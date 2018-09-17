@@ -9,10 +9,14 @@ const reducer = (state = initialState, action) => {
     case 'SET_PRODUCTS':
       return ({...state, products: action.products});
     case 'SELECT_ITEM':
-      return ({...state, selectedItem: action.selecta});
+      return ({...state, selectedItem: action.selected});
+    /* case 'FILTER_CATEGORY':
+      const filteredProducts = state.products.filter(el => {
+        return el.category === action.category
+      });
+      return ({...state, products: filteredProducts}); */
     default:
       return state;
-
   }
 }
 export default reducer;

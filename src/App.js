@@ -28,7 +28,7 @@ class App extends Component {
           path='/product'
           render={(props) => <ProductPage {...props} productInfo={this.props.chosenItem} />}
         /> */}
-        <Route path='/product' component={ProductPage} />
+        <Route path='/product/:id' component={ProductPage} />
         <Route path='/' exact component={Shop} />
       </Switch>
     )

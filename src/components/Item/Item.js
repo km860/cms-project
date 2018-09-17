@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-
+import { NavLink } from 'react-router-dom'
 const imgcontainer = css`
   width: 200px;
   img {
@@ -33,15 +33,17 @@ const PinkDiv = styled('div')`
 `
 const item = (props) => {
   return (
-    <div className={itemcontainer} onClick={() => props.clicked(props.info)}>
-      <div className={imgcontainer}>
-        <img src={"http://localhost:1337" + props.info.images[0].url} alt=""/>
+    <NavLink to={`/product/${props.info._id}`}>
+      <div className={itemcontainer}>
+        <div className={imgcontainer}>
+          <img src={"http://localhost:1337" + props.info.images[0].url} alt=""/>
+        </div>
+        <div>
+          <p>{props.info.name}</p>
+          <PinkDiv>${props.info.price}</PinkDiv>
+        </div>
       </div>
-      <div>
-        <p>{props.info.name}</p>
-        <PinkDiv>${props.info.price}</PinkDiv>
-      </div>
-    </div>
+    </NavLink>
   )
 }
 
