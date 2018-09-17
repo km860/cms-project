@@ -25,7 +25,6 @@ const itemcontainer = css`
     box-shadow: 0 2px 14px grey;
     cursor: pointer;
   }
-  
 `
 const PinkDiv = styled('div')`
   color: hotpink;
@@ -33,15 +32,13 @@ const PinkDiv = styled('div')`
 `
 const item = (props) => {
   return (
-    <NavLink to={`/product/${props.info._id}`}>
-      <div className={itemcontainer}>
-        <div className={imgcontainer}>
-          <img src={"http://localhost:1337" + props.info.images[0].url} alt=""/>
-        </div>
-        <div>
-          <p>{props.info.name}</p>
-          <PinkDiv>${props.info.price}</PinkDiv>
-        </div>
+    <NavLink className={itemcontainer} to={`/product/${props.info._id}`}>
+      <div className={imgcontainer}>
+        <img src={"http://localhost:1337" + props.info.images[0].url} alt=""/>
+      </div>
+      <div>
+        <p>{props.info.name}</p>
+        <PinkDiv>${props.info.price}</PinkDiv>
       </div>
     </NavLink>
   )

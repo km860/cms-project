@@ -59,7 +59,7 @@ class ProductPage extends Component {
   }
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.error("id is", id)
+    console.log("id is", id)
     this.props.onInitProduct(id)
     /* if (this.props.productInfo && this.props.productInfo !== undefined) {
       console.log(this.props.productInfo.name);
@@ -80,7 +80,7 @@ class ProductPage extends Component {
     let text = null;
     if (this.props.productInfo && this.props.productInfo !== undefined) {
       const info = this.props.productInfo
-      console.log(this.props.productInfo.images);
+      
       gallery = (
         <div>
           <img src={'http://localhost:1337' + info.images[0].url} alt=""/>

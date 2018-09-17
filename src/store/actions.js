@@ -21,7 +21,7 @@ export const initFilter = (cat) => {
         dispatch(setProducts(res.data))
       }) 
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
 }
@@ -36,7 +36,7 @@ export const initProduct = (product) => {
         dispatch(selectProduct(res.data))
       })
       .catch(err => {
-        console.log(err)
+        console.error(err)
       })
   }
 }
@@ -48,7 +48,7 @@ export const initShop = () => {
         dispatch(setProducts(res.data));
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
     //axios.get('http://localhost:1337/api/user/models')
   }  
