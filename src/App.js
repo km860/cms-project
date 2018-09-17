@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
 //import { connect } from 'react-redux';
-import { css, injectGlobal } from 'emotion';
+//import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { injectGlobal } from 'emotion';
 //import * as actions from './store/actions';
 import Shop from './containers/Shop/Shop';
 import ProductPage from './containers/ProductPage';
@@ -40,7 +41,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

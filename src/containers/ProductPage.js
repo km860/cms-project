@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled, { css } from 'react-emotion';
 
 import NavBar from '../components/NavBar/NavBar';
+import Reviews from './Reviews';
 import * as actions from '../store/actions';
 
 const page = css`
@@ -60,6 +61,10 @@ const BuyBtn  = styled('button')`
     box-shadow: none;
   }
 `
+const stockSpan = css`
+  font-size: 12px;
+  color: grey;
+`
 class ProductPage extends Component {
   state = {
     product: null
@@ -97,7 +102,10 @@ class ProductPage extends Component {
         <div>
           <h4>{info.name}</h4>
           <p>{info.description}</p>
-          <p>${info.price}</p>
+          <div>
+            <p>${info.price}</p>
+            <span className={stockSpan}>{info.in_stock} in stock</span>
+          </div>
           <BuyBtn>ADD TO CART</BuyBtn>
         </div>
       )
@@ -114,6 +122,7 @@ class ProductPage extends Component {
             {text}
           </div>
         </div>
+        <Reviews id={this.props.match.params.id} />
       </div>
     )
   }

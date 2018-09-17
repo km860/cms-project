@@ -1,7 +1,8 @@
 // Jag suger på namngivning
 const initialState = {
   products: [],
-  selectedItem: null
+  selectedItem: null,
+  reviews: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,8 @@ const reducer = (state = initialState, action) => {
       return ({...state, products: action.products});
     case 'SELECT_ITEM':
       return ({...state, selectedItem: action.selected});
+    case 'SET_REVIEWS':
+      return ({...state, reviews: action.reviews});
     /* case 'FILTER_CATEGORY':
       const filteredProducts = state.products.filter(el => {
         return el.category === action.category
