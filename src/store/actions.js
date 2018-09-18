@@ -78,8 +78,28 @@ export const getReviews = (id) => {
   return dispatch => {
     axios.get('http://localhost:1337/review?productId=' + id)
       .then(res => {
-        console.log(res.data)
+        console.log(res)
         dispatch(setReviews(res.data))
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+}
+
+export const postReview = (inData) => {
+  
+  return dispatch => {
+    console.log(inData)
+    axios.post('http://localhost:1337/review', {
+      productId: inData.productId,
+      content: inData.content,
+      rating: inData.rating,
+      author: inData.author
+    })
+      .then(res => {
+        console.log(res)
+        dispatch(getReviews(inData.productId))
       })
       .catch(err => {
         console.error(err)
