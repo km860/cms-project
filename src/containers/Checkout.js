@@ -8,8 +8,11 @@ class Checkout extends Component {
   }
   render() {
     let checkoutCart = [];
-    let cartItems = this.props.cartItems;
-    console.log(cartItems);
+    let cartObj = this.props.cartItems;
+    let cartArr = Object.keys(cartObj).map(function(key) {
+      return {[key]: cartObj[key]};
+    });
+    console.log('cartitems ', cartArr);
     let products = this.props.products;
     return (
       <div>Hej</div>

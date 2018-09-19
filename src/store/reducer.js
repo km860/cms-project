@@ -27,6 +27,11 @@ const reducer = (state = initialState, action) => {
       } else {
         updatedCart[productId] = 1;
       }
+      console.log(updatedCart);
+      var result = Object.keys(updatedCart).map(function(key) {
+        return {[key]: updatedCart[key]};
+      });
+      console.log(result);
       return ({ ...state, cart: updatedCart, noOfItemsInCart: state.noOfItemsInCart + 1})
 
     case 'FILTER_CATEGORY':
