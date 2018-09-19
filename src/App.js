@@ -6,6 +6,7 @@ import { injectGlobal } from 'emotion';
 //import * as actions from './store/actions';
 import Shop from './containers/Shop/Shop';
 import ProductPage from './containers/ProductPage';
+import Checkout from './containers/Checkout';
 //import Spinner from './components/UI/Spinner/Spinner';
 
 injectGlobal`
@@ -30,6 +31,7 @@ class App extends Component {
           render={(props) => <ProductPage {...props} productInfo={this.props.chosenItem} />}
         /> */}
         <Route path='/product/:id' component={ProductPage} />
+        <Route path='/checkout' component={Checkout} />
         <Route path='/' exact component={Shop} />
       </Switch>
     )

@@ -26,7 +26,7 @@ const navbar = (props) => {
       </div>
       <div>
         <img src={ require('../../assets/online-shopping-cart.png') } alt=""/>
-        <span>(0)</span>
+        <Link to='/checkout'><span>( {props.inCart} )</span></Link>
       </div>
     </div>
   )

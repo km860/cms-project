@@ -18,7 +18,14 @@ const imagecontainer = css`
     width: 100%
   }
 `
+const desc = css`
+  line-height: 1.6em;
+`
 
+const prices = css`
+  margin-top: 10px;
+  font-size: 20px;
+`
 const textContainer = css`
   max-width: 450px;
   h4 {
@@ -28,17 +35,7 @@ const textContainer = css`
     font-weight: 400;
     letter-spacing: 0.2em;
   }
-  p {
-    line-height: 1.6em;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: #333; 
-  }
-  p:last-of-type {
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 400;
-  }
+  
 `
 
 const BuyBtn  = styled('button')`
@@ -69,6 +66,7 @@ class ProductPage extends Component {
   state = {
     product: null
   }
+
   componentDidMount() {
     const id = this.props.match.params.id;
     console.log("id is", id)
@@ -83,6 +81,12 @@ class ProductPage extends Component {
 
   componentDidUpdate(prevProps) {
 
+  }
+
+  handleClick = (event, id) => {
+    event.preventDefault();
+    console.log(id);
+    this.props.onAddToCart(id);
   }
   render() {
     /* this.props.productInfo.images.map(el => {
@@ -101,19 +105,19 @@ class ProductPage extends Component {
       text = (
         <div>
           <h4>{info.name}</h4>
-          <p>{info.description}</p>
+          <p className={desc}>{info.description}</p>
           <div>
-            <p>${info.price}</p>
+            <p className={prices}>${info.price}</p>
             <span className={stockSpan}>{info.in_stock} in stock</span>
           </div>
-          <BuyBtn>ADD TO CART</BuyBtn>
+          <BuyBtn onClick={(event) => this.handleClick(event, info.id)}>ADD TO CART</BuyBtn>
         </div>
       )
       
     }
     return (
       <div>
-        <NavBar />
+        <NavBar inCart={this.props.itemsInCart} />
         <div className={page}>
           <div className={imagecontainer}>
             {gallery}
@@ -130,13 +134,15 @@ class ProductPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    productInfo: state.selectedItem
+    productInfo: state.selectedItem,
+    itemsInCart: state.noOfItemsInCart
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitProduct: (id) => dispatch(actions.initProduct(id))
+    onInitProduct: (id) => dispatch(actions.initProduct(id)),
+    onAddToCart: (id) => dispatch(actions.addToCart(id))
   }
 }
 
