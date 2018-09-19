@@ -25,10 +25,15 @@ const itemcontainer = css`
     box-shadow: 0 2px 14px grey;
     cursor: pointer;
   }
+  text-decoration: none;
+  &:visited {
+    color: black
+  }
 `
 const PinkDiv = styled('div')`
-  color: hotpink;
+  {/*color: hotpink;*/}
   padding: 10px;
+  font-size: 18px;
 `
 const item = (props) => {
   return (

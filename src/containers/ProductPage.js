@@ -69,7 +69,6 @@ class ProductPage extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log("id is", id)
     this.props.onInitProduct(id)
     /* if (this.props.productInfo && this.props.productInfo !== undefined) {
       console.log(this.props.productInfo.name);
@@ -85,7 +84,6 @@ class ProductPage extends Component {
 
   handleClick = (event, id) => {
     event.preventDefault();
-    console.log(id);
     this.props.onAddToCart(id);
   }
   render() {
