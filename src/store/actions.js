@@ -14,6 +14,13 @@ export const selectProduct = (selectedProduct) => {
   }
 }
 
+export const addToCart = (productId) => {
+  return {
+    type: 'ADD_TO_CART',
+    productId: productId
+  }
+}
+
 export const initFilter = (cat) => {
   return dispatch => {
     axios.get('http://localhost:1337/products?category=' + cat)
@@ -78,7 +85,6 @@ export const getReviews = (id) => {
   return dispatch => {
     axios.get('http://localhost:1337/review?productId=' + id)
       .then(res => {
-        console.log(res)
         dispatch(setReviews(res.data))
       })
       .catch(err => {

@@ -47,7 +47,7 @@ class Shop extends Component {
     const categories = ['toy drones', 'camera drones', 'drone accessories'];
     return (
       <div className="Main">
-        <NavBar />
+        <NavBar inCart={this.props.itemsInCart}/>
         <div>
           <SideBar 
             categories={categories} 
@@ -71,7 +71,8 @@ class Shop extends Component {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    chosenItem: state.selectedItem
+    chosenItem: state.selectedItem,
+    itemsInCart: state.noOfItemsInCart
   }
 }
 
