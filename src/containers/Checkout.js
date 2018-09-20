@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom'
 import { css } from 'react-emotion';
 import * as actions from '../store/actions'
+import NavBar from '../components/NavBar/NavBar';
 
 const itemDiv = css`
   display: flex;
@@ -169,6 +170,7 @@ class Checkout extends Component {
     }
     return (
       <div>
+        <NavBar inCart={this.props.itemsInCart}/>
         {display}
       </div>
     );
@@ -179,6 +181,7 @@ const mapStateToProps = state => {
   return {
     products: state.products,
     cartItems: state.cart,
+    itemsInCart: state.noOfItemsInCart,
     done: state.done
   }
 }

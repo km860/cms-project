@@ -22,7 +22,7 @@ const reviewDiv = css`
     font-weight: 300;
     border-right: 2px solid #e7e7e7;
     border-bottom: 2px solid #e7e7e7;
-    padding: 0 10px 10px 0;
+    padding: 0 10px 10px 10px;
   }
 `
 const formDiv = css`

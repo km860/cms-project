@@ -1,4 +1,9 @@
 import React from 'react';
+import { css } from 'react-emotion';
+
+const container = css`
+  padding: 0 10px;
+`
 
 const stars = (props) => {
   let numberOfStars = [];
@@ -6,7 +11,7 @@ const stars = (props) => {
     numberOfStars.push(<span key={i}>&#x2605;</span>);
   }
   return (
-    <div>
+    <div className={container}>
       {numberOfStars}
     </div>
   )

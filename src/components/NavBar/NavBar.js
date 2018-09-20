@@ -17,6 +17,9 @@ const bar = css`
     line-height: 100%;
     vertical-align: super;
   }
+  a {
+    text-decoration: none;
+  }
 `
 const navbar = (props) => {
   return (
@@ -24,10 +27,12 @@ const navbar = (props) => {
       <div>
         <Link to='/'><span>Home</span></Link>
       </div>
-      <div>
-        <img src={ require('../../assets/online-shopping-cart.png') } alt=""/>
-        <Link to='/checkout'><span>( {props.inCart} )</span></Link>
-      </div>
+      <Link to='/checkout'>
+        <div>
+          <img src={ require('../../assets/online-shopping-cart.png') } alt=""/>
+          <span>( {props.inCart} )</span>
+        </div>
+      </Link>
     </div>
   )
 }
