@@ -19,6 +19,9 @@ const bar = css`
   }
   a {
     text-decoration: none;
+    &:link, &:visited {
+      color: black;
+    }
   }
 `
 const navbar = (props) => {

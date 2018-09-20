@@ -70,11 +70,7 @@ class ProductPage extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     this.props.onInitProduct(id)
-    /* if (this.props.productInfo && this.props.productInfo !== undefined) {
-      console.log(this.props.productInfo.name);
-      this.setState({product: this.props.productInfo})
-    } */
-
+    
    
   }
 
@@ -87,9 +83,7 @@ class ProductPage extends Component {
     this.props.onAddToCart(id);
   }
   render() {
-    /* this.props.productInfo.images.map(el => {
-      images.push({original: 'http://localhost:1337' + el.url})
-    }) */
+  
     let gallery = null;
     let text = null;
     if (this.props.productInfo && this.props.productInfo !== undefined) {

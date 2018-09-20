@@ -53,6 +53,21 @@ export const initSortPrice = (val) => {
       })
   }
 }
+export const initSortStock = (val) => {
+  let sort = 'asc';
+  if (val === 'High') {
+    sort = 'desc'
+  }
+  return dispatch => {
+    axios.get('http://localhost:1337/products?_sort=in_stock:' + sort)
+      .then(res => {
+        dispatch(setProducts(res.data))
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+}
 
 export const initProduct = (product) => {
   return dispatch => {
@@ -75,7 +90,6 @@ export const initShop = () => {
       .catch(err => {
         console.error(err)
       })
-    //axios.get('http://localhost:1337/api/user/models')
   }  
 }
 

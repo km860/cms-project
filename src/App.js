@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
-//import { Route, Switch, withRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'emotion';
-//import * as actions from './store/actions';
 import Shop from './containers/Shop/Shop';
 import ProductPage from './containers/ProductPage';
 import Checkout from './containers/Checkout';
-//import Spinner from './components/UI/Spinner/Spinner';
 
 injectGlobal`
   * {
@@ -15,6 +11,11 @@ injectGlobal`
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;     
+      
+      body {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
   }
 `
 
@@ -26,10 +27,6 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        {/* <Route 
-          path='/product'
-          render={(props) => <ProductPage {...props} productInfo={this.props.chosenItem} />}
-        /> */}
         <Route path='/product/:id' component={ProductPage} />
         <Route path='/checkout' component={Checkout} />
         <Route path='/' exact component={Shop} />
@@ -38,7 +35,6 @@ class App extends Component {
     return (
       <div className="App">
         {routes}
-        {/* <Spinner /> */}
       </div>
     );
   }

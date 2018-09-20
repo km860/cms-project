@@ -25,8 +25,9 @@ const itemcontainer = css`
     box-shadow: 0 2px 14px grey;
     cursor: pointer;
   }
+
   text-decoration: none;
-  &:visited {
+  &:visited, &:link {
     color: black
   }
 `

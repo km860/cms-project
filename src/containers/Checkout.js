@@ -30,8 +30,46 @@ const priceDiv = css`
   width: 90%;
   margin: 10px auto;
 `
+const orderDiv = css`
+  width: 90%;
+  margin: 20px auto;
+  h3 {
+    font-size: 22px;
+    font-weight: 300;
+  }
+`
 const formElement = css`
+label {
+  display: block;
+  padding: 10px 2px;
+}
 
+input {
+  width: 50%;
+  height: 30px;
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+}
+`
+const submitBtn = css`
+  display: block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #222222;
+  color: white;
+  letter-spacing: 0.2em;
+  font-size: 18px;
+  font-weight: lighter;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  &:hover {
+    background-color: #222c;
+  }
+  &:active {
+    background-color: black;
+    box-shadow: none;
+  }
 `
 
 class Checkout extends Component {
@@ -83,26 +121,22 @@ class Checkout extends Component {
 
   render() {
     const doneRedirect = this.props.done ? <Redirect to='/' /> : null;
-    let checkoutCart = [];
+
     let cartObj = this.props.cartItems;
-    let cartArr = Object.keys(cartObj).map(function(key) {
-      return {[key]: cartObj[key]};
-    });
-    console.log('cartitems ', cartArr);
+
     let products = this.props.products;
-    console.log(Object.keys(cartObj))
     let pArr = products.filter(el => {
       return Object.keys(cartObj).includes(el.id);
     });
+
     pArr.map(el => {
       return (el.qt = cartObj[el.id]);
     })
-    console.log('pArr', pArr);
 
     const finalPrice = pArr.map(el => {
       return cartObj[el.id] * el.price;
     }).reduce((a, b) => a + b, 0).toFixed(2)
-    console.log('final price: ', finalPrice)
+
     let summary = pArr.map((el, index) => {
       return (
         <div key={index} className={itemDiv}>
@@ -127,8 +161,8 @@ class Checkout extends Component {
           <div className={priceDiv}>
             <p><strong>Total Price</strong>: ${finalPrice}</p>
           </div>
-          <div>
-            <h3>Order</h3>
+          <div className={orderDiv}>
+            <h3>Customer Information</h3>
             <form onSubmit={this.handleSubmit}>
               <div className={formElement}>
                 <label htmlFor="name">Name</label>
@@ -136,6 +170,7 @@ class Checkout extends Component {
                   type="text" 
                   name='name' 
                   value={this.state.name} 
+                  required
                   onChange={(event) => this.handleNameField(event, finalPrice)} />
               </div>
               <div className={formElement}>
@@ -143,7 +178,8 @@ class Checkout extends Component {
                 <input 
                   type="text" 
                   name='address' 
-                  value={this.state.address} 
+                  value={this.state.address}
+                  required 
                   onChange={this.handleAddressField} />
               </div>
               <div className={formElement}>
@@ -151,7 +187,8 @@ class Checkout extends Component {
                 <input 
                   type="text" 
                   name='zip' 
-                  value={this.state.zip} 
+                  value={this.state.zip}
+                  required 
                   onChange={this.handleZipField} />
               </div>
               <div className={formElement}>
@@ -159,10 +196,11 @@ class Checkout extends Component {
                 <input 
                   type="text" 
                   name='city' 
-                  value={this.state.city} 
+                  value={this.state.city}
+                  required 
                   onChange={this.handleCityField} />
               </div>
-              <input type="submit" value='submit' />
+              <input type="submit" value='buy' className={submitBtn} />
             </form>
           </div>
         </div>

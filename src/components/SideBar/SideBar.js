@@ -5,6 +5,9 @@ const sidebarContainer = css`
   
   border: 1px solid #bfbfbf;
   padding: 10px;
+  margin-bottom: 20px;
+  background-color: #000000ba;
+  color: white;
   display: flex;
   justify-content: space-between;
   h4 {
@@ -18,7 +21,7 @@ const sidebarContainer = css`
   }
   li {
     padding-bottom: 10px;
-    color: black;
+    color: white;
   }
 `
 const sideBar = (props) => {
@@ -30,6 +33,11 @@ const sideBar = (props) => {
   let sortByPrice = sortPrice.map(val => {
     return <li key={val} onClick={() => props.sortPrice(val)}>{val}</li>
   })
+  const sortStock = ['High', 'Low'];
+  let sortByStock = sortStock.map(val => {
+    return <li key={val} onClick={() => props.sortStock(val)}>{val}</li>
+  })
+
 
   return (
     <div className={sidebarContainer}>
@@ -37,6 +45,12 @@ const sideBar = (props) => {
         <h4 onClick={props.clickReset}>Shop Drones and Accessories</h4>
         <ul>
           {category}
+        </ul>
+      </div>
+      <div>
+        <h4>Sort By In Stock</h4>
+        <ul>
+          {sortByStock}
         </ul>
       </div>
       <div>
