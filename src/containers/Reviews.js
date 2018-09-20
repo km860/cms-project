@@ -141,7 +141,8 @@ class Reviews extends Component {
             type="text" 
             name='name' 
             value={this.state.author} 
-            onChange={this.handleInput} />
+            onChange={this.handleInput}
+            required />
         </div>
         <div className={formElement}>
           <label htmlFor="reviewText">Your review</label>

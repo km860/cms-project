@@ -20,6 +20,11 @@ export const addToCart = (productId) => {
     productId: productId
   }
 }
+export const orderSuccess = () => {
+  return {
+    type: 'ORDER_SUCCESS'
+  }
+}
 
 export const initFilter = (cat) => {
   return dispatch => {
@@ -106,6 +111,25 @@ export const postReview = (inData) => {
       .then(res => {
         console.log(res)
         dispatch(getReviews(inData.productId))
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+}
+
+
+export const postOrder = (order) => {
+  return dispatch => {
+    console.log(order)
+    axios.post('http://localhost:1337/orders', {
+      customer_info: order.customer_info,
+      products: order.products,
+      price_final: order.price_final
+    })
+      .then(res => {
+        console.log(res)
+        dispatch(orderSuccess())
       })
       .catch(err => {
         console.error(err)
