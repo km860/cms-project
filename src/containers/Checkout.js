@@ -14,6 +14,11 @@ class Checkout extends Component {
     });
     console.log('cartitems ', cartArr);
     let products = this.props.products;
+    console.log(Object.keys(cartObj))
+    let pArr = products.filter(el => {
+      return Object.keys(cartObj).includes(el.id);
+    });
+    console.log('pArr', pArr);
     return (
       <div>Hej</div>
     )
