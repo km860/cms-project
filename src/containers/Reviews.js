@@ -1,8 +1,79 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { css } from 'react-emotion';
 import Stars from '../components/UI/Stars';
 import * as actions from '../store/actions';
 
+const wrapper = css`
+  margin-top: 100px;
+  h4 {
+    font-size: 20px;
+    font-weight: 300;
+  }
+`
+const reviewDiv = css`
+  margin: 20px auto;
+  width: 90%;
+  padding: 10px;
+  blockquote {
+    margin: 10px 0;
+    line-height: 1.6em;
+    width: auto;
+    font-weight: 300;
+    border-right: 2px solid #e7e7e7;
+    border-bottom: 2px solid #e7e7e7;
+    padding: 0 10px 10px 0;
+  }
+`
+const formDiv = css`
+  width: 90%;
+  margin: 20px auto;
+  padding: 10px;
+`
+const formElement = css`
+  label {
+    display: block;
+    padding: 10px 2px;
+  }
+  textarea {
+    margin: 10px 0;
+    padding: 5px;
+    width: 80%;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+  }
+  input {
+    width: 50%;
+    height: 30px;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+  }
+`
+const ratingDiv = css`
+  label {
+    padding-right: 10px;
+  }
+  input {
+    display: block;
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: #222222;
+    color: white;
+    letter-spacing: 0.2em;
+    font-size: 15px;
+    font-weight: lighter;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    &:hover {
+      background-color: #222c;
+    }
+    &:active {
+      background-color: black;
+      box-shadow: none;
+    }
+  }
+`
 class Reviews extends Component {
   state = {
     productId: this.props.id,
@@ -53,18 +124,18 @@ class Reviews extends Component {
   render() {
     let displayReview = this.props.listReviews.map((el, i) => {
       return (
-        <div key={i}>
-          <h5>{el.author}</h5>
-          <p>{el.content}</p>
+        <div key={i} className={reviewDiv}>
           <Stars rating={el.rating} />
-          <br/>
+          <blockquote>
+            &lsquo;{el.content}&rsquo; - <em><strong>{el.author}</strong></em>
+          </blockquote>
         </div>
       )
     })
     
     let form = (
       <form onSubmit={this.handleSubmit}>
-        <div>
+        <div className={formElement}>
           <label htmlFor="name">Name</label>
           <input 
             type="text" 
@@ -72,11 +143,11 @@ class Reviews extends Component {
             value={this.state.author} 
             onChange={this.handleInput} />
         </div>
-        <div>
+        <div className={formElement}>
           <label htmlFor="reviewText">Your review</label>
           <textarea value={this.state.content} onChange={this.handleText} name="reviewText" id="reveiwText" cols="30" rows="10"></textarea>
         </div>
-        <div>
+        <div className={ratingDiv}>
           <label htmlFor="">Rating</label>
           <select value={this.state.rating} onChange={this.handleRating}>
             <option value='0'>0</option>
@@ -91,9 +162,9 @@ class Reviews extends Component {
       </form>
     )
     return (
-      <div>
+      <div className={wrapper}>
         {displayReview}
-        <div>
+        <div className={formDiv}>
           <h4>Leave a review</h4>
           {form}
         </div>

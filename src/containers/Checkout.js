@@ -77,6 +77,7 @@ class Checkout extends Component {
             <p><strong>Total Price</strong>: ${finalPrice}</p>
           </div>
           <div>
+            <h3>Order</h3>
             <form onSubmit={this.handleSubmit}>
               
             </form>
